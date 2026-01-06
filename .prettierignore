@@ -1,0 +1,17 @@
+node_modules
+dist
+build
+coverage
+.env
+.vscode
+.DS_Store
+.idea
+*.log
+docs
+.gitignore
+README.md
+package-lock.json
+bun.lock
+tsconfig.json
+LICENSE
+
