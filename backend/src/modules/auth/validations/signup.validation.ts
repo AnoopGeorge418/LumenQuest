@@ -1,25 +1,29 @@
-import { AppError } from "../../../middlewares/appError.middleware"
+import { AppError } from '../../../middlewares/appError.middleware';
 
-export const signUpAuthValidator = ( data: any ) => {
+export const signUpAuthValidator = (data: any) => {
+	if ( !data || typeof data !== "object" ) throw new AppError('Request Data is Missing or invalid!', 400);
 
-    if ( !data ) throw new AppError( "Request Data is Missing!", 400)
+	const { userName, email } = data;
 
-    // Username field
-    if ( !data.userName  ) {
-        throw new AppError("Username is required!", 400)
-    } else if ( data.userName.length <= 4) {
-        throw new AppError("Username must be more than 4 characters!", 400)
-    }
+	// Username Validation
+	if ( !userName ) throw new AppError('Username is required!', 400);
+	if ( typeof userName  !== "string" ) throw new AppError("Username must be a string", 400);
+	
+	const trimmedUserName = userName.trim()
+	if ( trimmedUserName.length < 4 ) throw new AppError('Username must be atleast 4 character long!', 400);
 
-    // Email field
-    if ( !data.email ) {
-        throw new AppError("Email is required!", 400)
-    } else if ( !data.email.includes('@') ) {
-        throw new AppError("Please enter a valid email address", 400)
-    }
+	
+	// Email Validation
+	if ( !email ) throw new AppError('Email is required!', 400);
+	if ( typeof email !== 'string' ) throw new AppError('Email must be a string', 400);
 
+	const trimmedEmail = email.trim();
+	if ( !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail) ) throw new AppError("Please enter a valid email address");
 
-    return true
-    
-}
+	// Normalizing data
+	data.userName = trimmedUserName;
+	data.email = trimmedEmail;
 
+	return true;
+	
+};

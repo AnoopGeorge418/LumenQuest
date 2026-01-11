@@ -1,13 +1,12 @@
 export class AppError extends Error {
+	/**
+	 * Responsible for Catching all the error messages with status code
+	 */
 
-    /**
-     * Responsible for Catching all the error messages with status code
-     */
+	statusCode: number;
 
-    statusCode: number
-
-    constructor( message: string, statusCode = 400 ) {
-        super(message)
-        this.statusCode = statusCode
-    }
+	constructor(message: string, statusCode = 400) {
+		super(message);
+		this.statusCode = statusCode;
+	}
 }

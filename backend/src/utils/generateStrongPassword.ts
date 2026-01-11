@@ -1,13 +1,12 @@
-export const generateRandomStrongPassword = () => {
-    
-    let password = ''
+export const generateSecurePassword = () => {
+	let password = '';
 
-    const symbols: string = '`~!@#$%^&*()_-+=|[]}{;/.,?><}';
-    const letters: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    const numbers: string = '1234567890';
+	const symbols: string = '`~!@#$%^&*()_-+=|[]}{;/.,?><}';
+	const letters: string =
+		'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+	const numbers: string = '1234567890';
 
-    password += `${symbols}${letters}${numbers}`
+	password += `${symbols}${letters}${numbers}`;
 
-    return password
-    
-}
+	return password;
+};
