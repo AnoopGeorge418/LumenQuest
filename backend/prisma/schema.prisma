@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id                      String    @id @default(uuid())
+  userName                String    @unique
+  email                   String    @unique
+
+  emailVerified           Boolean   @default(false)
+  emailVerifiedAt         DateTime?
+
+  password                String?
+  passwordChangedAt       DateTime?
+
+  isOnboarded             Boolean   @default(false)
+  onboardingStep          Int       @default(0)
+
+  tosApproved             Boolean   @default(false)
+  tosApprovedAt           DateTime?
+
+  privacyPolicyApproved   Boolean   @default(false)
+  privacyPolicyApprovedAt DateTime?
+
+  role                    Role      @default(USER)
+
+  createdAt               DateTime  @default(now())
+  updatedAt               DateTime  @updatedAt
+
+  verificationTokens      VerificationToken[]
+
+  @@index([userName])
+  @@index([email])
+}
+
+enum Role {
+  USER
+  ADMIN
+  SUPERADMIN
+}
+
+model VerificationToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  type      VerificationType
+
+  expiresAt DateTime
+  usedAt    DateTime?
+
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@index([token])
+  @@index([userId])
+}
+
+enum VerificationType {
+  EMAIL_VERIFY
+  PASSWORD_RESET
+  MAGIC_LOGIN
+}
