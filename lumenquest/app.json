@@ -1,0 +1,64 @@
+{
+  "expo": {
+    "name": "lumenquest",
+    "slug": "lumenquest",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icons/icon.png",
+    "scheme": "lumenquest",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "icon": "./assets/expo.icon"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.anoopgeorge.lumenquest"
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/icons/icon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#ffffff",
+          "android": {
+            "image": "./assets/icons/icon.png",
+            "imageWidth": 76
+          }
+        }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Playfair-Regular.ttf",
+            "./assets/fonts/Playfair-Bold.ttf",
+            "./assets/fonts/Playfair-Black.ttf",
+            "./assets/fonts/PlayfairDisplay-Regular.ttf",
+            "./assets/fonts/PlayfairDisplay-Bold.ttf",
+            "./assets/fonts/PlayfairDisplay-Black.ttf",
+            "./assets/fonts/JetBrainsMono-Light.ttf",
+            "./assets/fonts/JetBrainsMono-Regular.ttf",
+            "./assets/fonts/JetBrainsMono-Bold.ttf"
+          ]
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "69459753-5a1b-4555-bd07-c8ae4d72472a"
+      }
+    }
+  }
+}
