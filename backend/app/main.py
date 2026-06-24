@@ -1,14 +1,27 @@
 from fastapi import FastAPI
 from uvicorn import run
 
+from app.core.config.config import APP_SETTINGS
+
 # instancing of fastapi
-app = FastAPI()
+app = FastAPI(
+	title=APP_SETTINGS.APP_NAME,
+	description=APP_SETTINGS.APP_DESCRIPTION,
+	version=APP_SETTINGS.APP_VERSION
+)
+
+# App routes
+@app.get(f"{APP_SETTINGS.SERVER_BASE_API}/")
+def get_health():
+	return {
+		"Status": "Healthy!"
+	}
 
 if __name__ == "__main__":
 	# Staring uvicorn local server
 	run(
-		app="app.main:app",
-		host="127.0.0.1",
-		port=5000,
-		reload=True
+		app=APP_SETTINGS.SERVER_PATH,
+		host=APP_SETTINGS.SERVER_HOST,
+		port=APP_SETTINGS.SERVER_PORT,
+		reload=APP_SETTINGS.SERVER_RELOAD,
 	)
