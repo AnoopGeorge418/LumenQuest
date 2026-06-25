@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from uvicorn import run
 
 from app.core.config.config import APP_SETTINGS
+from app.modules.discover.routes import discover_route
 
 # instancing of fastapi
 app = FastAPI(
@@ -11,11 +12,7 @@ app = FastAPI(
 )
 
 # App routes
-@app.get(f"{APP_SETTINGS.SERVER_BASE_API}/")
-def get_health():
-	return {
-		"Status": "Healthy!"
-	}
+app.include_router(router=discover_route, tags=["discover-books"], prefix=f"{APP_SETTINGS.SERVER_BASE_API}") # discover books routes
 
 if __name__ == "__main__":
 	# Staring uvicorn local server

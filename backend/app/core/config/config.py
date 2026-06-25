@@ -31,6 +31,8 @@ class Settings(BaseSettings):
 	AUTOFLUSH: bool
 	EXPIRE_ON_COMMIT: bool
 
+	BIBLE_BASE_API_URL: str
+
 # Loading Settings only once per app
 @lru_cache
 def get_settings() -> Settings:
