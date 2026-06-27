@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { Host } from "@expo/ui";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -31,12 +32,18 @@ export default function RootLayout() {
     }
   }, [loaded, error]);
 
-  return (
-    <ThemeProvider>
-          <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="(tabs)" />
-      </Stack>
-      <StatusBar style="auto" hidden={true} animated={true} hideTransitionAnimation="fade" />
+  if (!loaded && !error) {
+    return null;
+  }
+
+    return (
+      <ThemeProvider>
+        <Host style={{ flex: 1 }}>
+            <Stack screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="(tabs)" />
+            </Stack>
+            <StatusBar style="auto" hidden={true} animated={true} hideTransitionAnimation="fade" />
+        </Host>
     </ThemeProvider>
   );
 }
