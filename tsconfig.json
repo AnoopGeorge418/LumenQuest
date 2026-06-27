@@ -1,8 +1,7 @@
 {
-  "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "target": "ES6",
-    "module": "ES6",
+    "target": "es2016",
+    "module": "commonjs",
     "jsx": "react-native",
     "strict": true,
     "esModuleInterop": true,
@@ -10,15 +9,16 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
+
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"],
-      "@/assets/*": ["./assets/*"],
-      "@constants/*": ["./src/constants/*"],
-      "@components/*": [".src/components/*"]
+      "@constants/*": ["lumenquest/src/constants/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"],
+  "include": [
+    "lumenquest/**/*.ts",
+    "lumenquest/**/*.tsx"
+  ],
   "exclude": [
     "node_modules",
     "babel.config.js",
