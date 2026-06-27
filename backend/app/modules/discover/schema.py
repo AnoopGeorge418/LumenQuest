@@ -1,5 +1,3 @@
-from typing import Any, Literal, Union
-
 from pydantic import BaseModel
 
 
@@ -11,6 +9,7 @@ class ResponseBibleTranslationSchema(BaseModel):
     number_of_books: int
     total_number_of_chapters: int
     total_number_of_verses: int
+    cover_image: str
 
 
 class ResponseBibleBookSchema(BaseModel):
@@ -27,9 +26,14 @@ class ResponseBibleBookSchema(BaseModel):
     total_number_of_verses: int
 
 
+
+class VerseSchema(BaseModel):
+    chapter_heading: str
+    verse_number: int
+    verse_text: str
+
+
 class ResponseBibleChapterSchema(BaseModel):
-    chapter_number: int 
-    chapter_heading: list[Any]
-    verse_number: list[Any]
-    verse_content: list[Any]
+    chapter_number: int
+    content: list[VerseSchema]
 
