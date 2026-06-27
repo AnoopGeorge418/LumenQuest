@@ -33,6 +33,12 @@ class Settings(BaseSettings):
 
 	BIBLE_BASE_API_URL: str
 
+	CLOUDFLARE_R2_PUBLIC_URL_BASE: str
+	CLOUDFLARE_ACCESS_KEY: str
+	CLOUDFLARE_SECRET_KEY: str
+	CLOUDFLARE_ENDPOINT: str
+	CLOUDFLARE_R2_BUCKET_NAME: str
+    
 # Loading Settings only once per app
 @lru_cache
 def get_settings() -> Settings:
