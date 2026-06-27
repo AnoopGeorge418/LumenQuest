@@ -10,7 +10,7 @@ export const Card = ({ id, image, title, description }: CardProps) => {
     
     return (
         <View style={[cardStyles.container, { backgroundColor: theme?.card }]}>
-            <ImageBackground source={image} style={cardStyles.image} imageStyle={cardStyles.imageRadius}>
+            <ImageBackground source={{uri: image}} style={cardStyles.image} imageStyle={cardStyles.imageRadius}>
                 <View style={cardStyles.overlay}>
                     <Text style={[cardStyles.id, {color: theme?.textSecondary}]}>{id}</Text>
                 </View>
