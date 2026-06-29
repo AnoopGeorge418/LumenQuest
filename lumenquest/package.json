@@ -43,7 +43,8 @@
     "web": "expo start --web",
     "lint": "expo lint",
     "format": "bunx prettier --write .",
-    "format:check": "bunx prettier --check ."
+    "format:check": "bunx prettier --check .",
+    "start:dev": "bun expo start --dev-client"
   },
   "private": true
 }

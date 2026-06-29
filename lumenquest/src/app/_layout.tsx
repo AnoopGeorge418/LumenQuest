@@ -5,6 +5,7 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { Host } from "@expo/ui";
+import { ReadingListProvider } from "@/context/ReadingListContext";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -37,6 +38,7 @@ export default function RootLayout() {
   }
 
     return (
+        <ReadingListProvider>
       <ThemeProvider>
         <Host style={{ flex: 1 }}>
             <Stack screenOptions={{ headerShown: false }}>
@@ -44,6 +46,7 @@ export default function RootLayout() {
             </Stack>
             <StatusBar style="auto" hidden={true} animated={true} hideTransitionAnimation="fade" />
         </Host>
-    </ThemeProvider>
+            </ThemeProvider>
+        </ReadingListProvider>
   );
 }
