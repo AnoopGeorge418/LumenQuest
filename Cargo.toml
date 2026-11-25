@@ -1,6 +1,14 @@
-[package]
-name = "lumen_quest"
+[workspace]
+members = [
+    "server", 
+    "apps/web",
+    "apps/mobile",
+    "apps/desktop"
+]
+resolver = "3"
+
+[workspace.package]
 version = "0.1.0"
 edition = "2024"
-
-[dependencies]
+license = "MIT"
+authors = ["Anoop George <anoopgeorge418@gmail.com>"]
